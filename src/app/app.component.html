@@ -1,6 +1,14 @@
 <mat-drawer-container class="container">
   <mat-drawer #drawer mode="side" hasBackdrop="false" opened="true">
-    this is my drawer
+    <div class="user-info" *ngIf="user">
+      <img src="{{ user.photoUrl }}">
+        <div>
+          <h4>{{ user.name }}</h4>
+          <p>{{ user.email }}</p>
+        </div>
+    </div>
+
+    <button mat-fab (click)="signInWithGoogle()"><mat-icon>login</mat-icon></button>
   </mat-drawer>
   <mat-drawer-content>
 
