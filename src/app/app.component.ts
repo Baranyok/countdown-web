@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,28 +8,15 @@ import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-soc
 })
 export class AppComponent {
   title = 'Countdown';
-  mode = true;
-  user: SocialUser;
-  loggedIn: boolean;
 
-  constructor(private authService: SocialAuthService) { }
+  constructor(private authService: AuthService) { }
 
-  ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-    });
+  user = this.authService.user;
+  loggedIn = this.authService.isLoggedIn();
+
+
+  handleLogin(): void {
+    return this.loggedIn ? this.authService.logout() : this.authService.login();
   }
 
-  signInWithGoogle(): void {
-    if (this.loggedIn) {
-      return this.signOut();
-    }
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    console.log(this.authService.initState);
-  }
-
-  signOut(): void {
-    this.authService.signOut();
-  }
 }
