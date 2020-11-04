@@ -12,16 +12,16 @@ import {MatListModule} from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthPageComponent } from './auth-page/auth-page.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { UserInfoComponent } from './user-info/user-info.component';
+import { AddPageComponent } from './add-page/add-page.component';
+import { AllPageComponent } from './all-page/all-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthPageComponent,
-    SideNavComponent,
-    UserInfoComponent
+    AddPageComponent,
+    AllPageComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

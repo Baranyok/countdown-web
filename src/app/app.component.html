@@ -1,6 +1,6 @@
 <mat-drawer-container class="container">
-  <mat-drawer #drawer mode="side" hasBackdrop="false">
-    <app-side-nav></app-side-nav>
+  <mat-drawer #drawer mode="side" hasBackdrop="false" opened="true">
+    this is my drawer
   </mat-drawer>
   <mat-drawer-content>
 
@@ -10,8 +10,8 @@
         <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
       </mat-toolbar-row>
     </mat-toolbar>
-    <app-auth-page></app-auth-page>
 
-    <div style="height:88vh"></div><!--FILLER -->
+    <router-outlet></router-outlet>
+
   </mat-drawer-content>
 </mat-drawer-container>
