@@ -1,0 +1,5 @@
+<button (click)="authenticate()">Authenticate</button>
+<br>
+<div *ngIf="user">
+  <strong>User:</strong> {{user?.getBasicProfile().getEmail() | json}}, {{user?.getBasicProfile().getId() | json}}
+</div>
