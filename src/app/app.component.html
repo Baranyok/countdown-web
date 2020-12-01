@@ -1,21 +1,25 @@
 <mat-drawer-container class="container">
   <mat-drawer #drawer mode="side" hasBackdrop="false" opened="true">
     <div class="user-info" *ngIf="user">
-      <img src="{{ user.photoUrl }}">
-        <div>
-          <h4>{{ user.name }}</h4>
-          <p>{{ user.email }}</p>
-        </div>
+      <img src="{{ user.getBasicProfile().getImageUrl() }}">
+      <div>
+        <h4>{{ user.getBasicProfile().getName() }}</h4>
+        <p>{{ user.getBasicProfile().getEmail() }}</p>
+      </div>
     </div>
 
-    <button mat-fab (click)="handleLogin()"><mat-icon>login</mat-icon></button>
+    <button mat-fab (click)="authenticate()">
+      <mat-icon>login</mat-icon>
+    </button>
   </mat-drawer>
   <mat-drawer-content>
 
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <span>Custom Toolbar</span>
-        <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
       </mat-toolbar-row>
     </mat-toolbar>
 
