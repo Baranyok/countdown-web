@@ -1,12 +1,29 @@
 <mat-form-field appearance="fill">
   <mat-label>Select Calendar</mat-label>
-  <mat-select (click)="get()" placeholder="Select calendar">
+  <mat-select placeholder="Select calendar">
+    <mat-select-trigger>
+      <mat-icon>today</mat-icon>
+      {{selected_cal.summary}}
+    </mat-select-trigger>
     <mat-option *ngFor="let calendar of calendars" (click)="set_cal(calendar)" value="{{calendar.etaq}}"
-      selected="selected_cal == calendar">
+      selected="calendar == selected_cal">
+      <mat-icon>today</mat-icon>
       {{calendar.summary}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 <br>
+
+<button mat-flat-button mat-color="accent" (click)="get_events()">Get events</button>
+
+<mat-card>
+  <mat-list-item *ngFor="let event of events">
+    <mat-icon mat-list-icon>calendar_today</mat-icon>
+    <div mat-line>{{event.summary}}</div>
+    <div mat-line> {{event.start.dateTime | date }} </div>
+    <br>
+  </mat-list-item>
+</mat-card>
+
 <div style="height: 70vh;"></div>
 <!--FILLER-->

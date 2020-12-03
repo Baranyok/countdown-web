@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 
 // Components
@@ -38,6 +39,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    MatCardModule,
     MatListModule,
     MatSelectModule,
     MatFormFieldModule,

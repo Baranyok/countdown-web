@@ -5,7 +5,7 @@
       "protocol": "https:"
     },
     "pathRewrite": {
-      "/api": "www.googleapis.com/"
+      "/api": "www.googleapis.com/calendar"
     },
     "secure": false,
     "changeOrigin": true,
