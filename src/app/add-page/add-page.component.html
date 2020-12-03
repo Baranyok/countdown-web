@@ -1,2 +1,12 @@
-<p>add-page works!</p>
-<div style="height: 70vh;"></div> <!--FILLER-->
+<mat-form-field appearance="fill">
+  <mat-label>Select Calendar</mat-label>
+  <mat-select (click)="get()" placeholder="Select calendar">
+    <mat-option *ngFor="let calendar of calendars" (click)="set_cal(calendar)" value="{{calendar.etaq}}"
+      selected="selected_cal == calendar">
+      {{calendar.summary}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<div style="height: 70vh;"></div>
+<!--FILLER-->

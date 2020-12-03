@@ -31,7 +31,10 @@ export class AppComponent {
     // loaded and that we can call gapi.init
     return pload.then(async () => {
       await gapi.auth2
-        .init({ client_id: '346300399779-ct1nl6nntohmj3aajruu4klgstqrdkmq.apps.googleusercontent.com' })
+        .init({
+          client_id: '346300399779-ct1nl6nntohmj3aajruu4klgstqrdkmq.apps.googleusercontent.com',
+          scope: 'https://www.googleapis.com/auth/calendar',
+        })
         .then(auth => {
           this.gapiSetup = true;
           this.authInstance = auth;

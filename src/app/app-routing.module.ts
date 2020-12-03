@@ -5,10 +5,10 @@ import { AllPageComponent } from './all-page/all-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
-  {path: 'add', component: AddPageComponent},
-  {path: 'all', component: AllPageComponent},
-  {path: '**', component: ErrorPageComponent},
-  {path: '', redirectTo: 'add', pathMatch: 'full'}
+  { path: 'add', component: AddPageComponent },
+  { path: 'all', component: AllPageComponent },
+  { path: '', redirectTo: '/add', pathMatch: 'full' },
+  { path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({
