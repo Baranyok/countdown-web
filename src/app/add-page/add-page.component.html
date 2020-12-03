@@ -1,29 +1,40 @@
-<mat-form-field appearance="fill">
-  <mat-label>Select Calendar</mat-label>
-  <mat-select placeholder="Select calendar">
-    <mat-select-trigger>
-      <mat-icon>today</mat-icon>
-      {{selected_cal.summary}}
-    </mat-select-trigger>
-    <mat-option *ngFor="let calendar of calendars" (click)="set_cal(calendar)" value="{{calendar.etaq}}"
-      selected="calendar == selected_cal">
-      <mat-icon>today</mat-icon>
-      {{calendar.summary}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
+<div class="content" *ngIf="auth.user">
+  <mat-form-field appearance="fill">
+    <mat-label>Select Calendar</mat-label>
+    <mat-select placeholder="Select calendar">
+      <mat-select-trigger>
+        <mat-icon>today</mat-icon>
+        {{selected_cal.summary}}
+      </mat-select-trigger>
+      <mat-option *ngFor="let calendar of calendars" (click)="set_cal(calendar)" value="{{calendar.etaq}}"
+        selected="calendar == selected_cal">
+        <mat-icon>today</mat-icon>
+        {{calendar.summary}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<button mat-flat-button mat-color="accent" (click)="get_events()">Get events</button>
+  <button mat-flat-button mat-color="accent" (click)="get_events()">Get events</button>
 
-<mat-card>
-  <mat-list-item *ngFor="let event of events">
-    <mat-icon mat-list-icon>calendar_today</mat-icon>
-    <div mat-line>{{event.summary}}</div>
-    <div mat-line> {{event.start.dateTime | date }} </div>
-    <br>
-  </mat-list-item>
-</mat-card>
+  <mat-card>
+    <mat-list-item *ngFor="let event of events">
+      <div class="event">
+        <mat-icon mat-list-icon>calendar_today</mat-icon>
+        <div>
+          <div mat-line>{{event.summary}}</div>
+          <div mat-line> {{event.start.dateTime | date }} </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-card>
+</div>
+
+<div style="height: 70vh;" class="loader" *ngIf="!auth.user">
+  <div class="loader-icon">
+    <div class="loader-inner"></div>
+  </div>
+</div>
 
 <div style="height: 70vh;"></div>
 <!--FILLER-->
