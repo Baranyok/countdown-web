@@ -1,17 +1,16 @@
 <mat-drawer-container class="container">
   <mat-drawer #drawer mode="side" hasBackdrop="false" opened="true">
-    <div class="user-info" *ngIf="user">
-      <img src="{{ user.getBasicProfile().getImageUrl() }}">
-      <div>
-        <h4>{{ user.getBasicProfile().getName() }}</h4>
-        <p>{{ user.getBasicProfile().getEmail() }}</p>
-      </div>
-    </div>
+    <mat-toolbar>
 
-    <button mat-fab (click)="authenticate()">
-      <mat-icon>login</mat-icon>
-    </button>
-    <mat-divider></mat-divider>
+      <div></div>
+      <img *ngIf="user" src="{{ user.getBasicProfile().getImageUrl() }}">
+      <span>{{user ? user.getBasicProfile().getName() : 'Unknown user'}}</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button (click)="authenticate()">
+        <mat-icon [matTooltip]="user ? 'Logout' : 'Login'">login</mat-icon>
+      </button>
+
+    </mat-toolbar>
 
     <mat-list>
       <a mat-list-item routerLink="add" [class]="currentSite === '/add' ? 'active' : ''">
@@ -32,7 +31,7 @@
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>Countdown</span>
+        <h1>Countdown</h1>
       </mat-toolbar-row>
     </mat-toolbar>
     <div class="body-wrapper">
