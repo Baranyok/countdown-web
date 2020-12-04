@@ -12,6 +12,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 // Components
@@ -39,7 +43,10 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    MatNativeDateModule,
     MatCardModule,
+    MatInputModule,
+    MatDatepickerModule,
     MatListModule,
     MatSelectModule,
     MatFormFieldModule,

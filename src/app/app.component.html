@@ -11,19 +11,33 @@
     <button mat-fab (click)="authenticate()">
       <mat-icon>login</mat-icon>
     </button>
+    <mat-divider></mat-divider>
+
+    <mat-list>
+      <a mat-list-item routerLink="add" [class]="currentSite === '/add' ? 'active' : ''">
+        <mat-icon>add</mat-icon>
+        Add event
+      </a>
+      <a mat-list-item routerLink="all" [class]="currentSite === '/all' ? 'active' : ''">
+        <mat-icon>list</mat-icon>
+        All events
+      </a>
+    </mat-list>
+
   </mat-drawer>
   <mat-drawer-content>
 
     <mat-toolbar color="primary">
       <mat-toolbar-row>
-        <span>Custom Toolbar</span>
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
+        <span>Countdown</span>
       </mat-toolbar-row>
     </mat-toolbar>
-
-    <router-outlet></router-outlet>
+    <div class="body-wrapper">
+      <router-outlet></router-outlet>
+    </div>
 
   </mat-drawer-content>
 </mat-drawer-container>

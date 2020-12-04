@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,14 @@ export class AppComponent {
   public error: string;
   user: gapi.auth2.GoogleUser;
 
+  public mobile = false;
+  public currentSite;
 
-  constructor() { }
+  constructor(public router: Router) {
+    router.events.subscribe((event: NavigationEnd) => {
+      this.currentSite = this.router.url;
+    });
+  }
 
   async ngOnInit() {
     if (await this.checkIfUserAuthenticated()) {

@@ -1,6 +1,21 @@
 
-
-
 .mat-drawer {
   min-width: 300px;
 }
+
+.body-wrapper {
+  padding: 16px;
+}
+
+mat-list {
+
+  mat-icon {
+    margin-right: .5em;
+  }
+
+  .active {
+    font-weight: bold;
+  }
+
+}
+
