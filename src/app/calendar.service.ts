@@ -38,8 +38,29 @@ export class CalendarService {
     );
   }
 
+  get_primary_calendar(token: string) {
+    let base_url = "calendar/v3/calendars/primary?access_token=".concat(token);
+
+    let headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT')
+
+    this.http.get(
+      base_url,
+      {
+        'headers': headers,
+        'responseType': 'json'
+      }
+    ).pipe(
+      map(res => {
+        console.log(res);
+        return res;
+      })
+    )
+  }
+
   get_events(token: string, cal_id: string) {
-    let base_url = "/calendar/v3/calendars/".concat(cal_id).concat("/events?access_token=").concat(token);
+    let base_url = "/calendar/v3/calendars/".concat(cal_id).concat("/events?access_token=", token);
 
     let headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
@@ -59,4 +80,22 @@ export class CalendarService {
       })
     );
   }
+
+  add_event(token: string, cal_id: string, event: any) {
+    console.log(event);
+    let base_url = "/calendar/v3/calendars/primary/events".concat('?access_token=', token);
+
+    let headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methodss', 'POST')
+
+    return this.http.post(
+      base_url,
+      event,
+      { headers }
+    ).subscribe((res) => {
+      console.log(res);
+    })
+  }
+
 }

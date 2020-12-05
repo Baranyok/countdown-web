@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // MATERIAL
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -42,6 +43,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MatSidenavModule,
     MatButtonModule,
     MatTooltipModule,
+    ReactiveFormsModule,
     MatMenuModule,
     MatIconModule,
     MatNativeDateModule,
