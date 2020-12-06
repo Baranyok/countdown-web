@@ -1,5 +1,5 @@
 <div class="content" *ngIf="authService.isUser()">
-  <mat-form-field appearance="fill">
+  <!-- <mat-form-field appearance="fill">
     <mat-label>Select Calendar</mat-label>
     <mat-select *ngIf="calendars" placeholder="Select calendar">
       <mat-select-trigger>
@@ -14,19 +14,48 @@
     </mat-select>
   </mat-form-field>
 
-  <button mat-flat-button mat-color="accent" (click)="get_events()">Get events</button>
+  <button mat-flat-button mat-color="accent" (click)="get_events()">Get events</button> -->
 
-  <mat-card *ngif="events">
-    <mat-list-item *ngFor="let event of events">
+
+
+  <mat-card *ngIf="events">
+    <button mat-flat-button color="primary" class="right" mat-button [matMenuTriggerFor]="menu">Change calendar</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let calendar of calendars"
+        (click)="set_calendar(calendar)">{{ calendar.summary }}</button>
+    </mat-menu>
+    <div class=" clear">
+    </div>
+
+    <div *ngFor="let event of events">
       <div class="event">
-        <mat-icon mat-list-icon>calendar_today</mat-icon>
-        <div>
-          <div mat-line>{{event.summary}}</div>
-          <div mat-line> {{event.start.dateTime | date }} </div>
+        <div class="event-info">
+          <mat-icon mat-list-icon>calendar_today</mat-icon>
+          <div>
+            <div mat-line>{{event.summary}}</div>
+            <div mat-line> {{event.start.dateTime | date }} </div>
+          </div>
+        </div>
+        <div class="event-buttons">
+          <button mat-mini-fab color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </div>
-      <mat-divider></mat-divider>
-    </mat-list-item>
+
+    </div>
+
+  </mat-card>
+
+  <mat-card *ngIf="!events">
+    <div class="loader">
+      <div class="loader-icon">
+        <div class="loader-inner"></div>
+      </div>
+    </div>
   </mat-card>
 </div>
 

@@ -3,12 +3,29 @@ mat-select-trigger mat-icon {
   margin-right: .5em;
 }
 
+
 .event {
   display: flex;
-  margin-bottom: 1em;
+  justify-content: space-between;
+  padding: 1.75em 1em;
+  cursor: pointer;
 
-  mat-icon {
-    margin-right: .5em;
-    margin-top: .25em;
+  .event-info {
+    display: flex;
+
+    mat-icon {
+      margin-top: .25em;
+      margin-right: .5em;    }
+  }
+
+  .event-buttons {
+
+    button {
+      margin: 0 .25em;
+    }
+  }
+
+  &:hover {
+    background: #f9f9f9;
   }
 }

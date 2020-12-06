@@ -88,6 +88,30 @@ export class CalendarService {
     );
   }
 
+
+  get_primary_events() {
+    let base_url = "/calendar/v3/calendars/primary/events";
+
+    let headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT')
+      .set('Authorization', 'Bearer ' + this.authService.getToken());
+
+    // https://stackoverflow.com/questions/37172928/angular-cli-server-how-to-proxy-api-requests-to-another-server
+    return this.http.get(
+      base_url,
+      {
+        'headers': headers,
+        'responseType': 'json'
+      }
+    ).pipe(
+      map(res => {
+        this.res = res;
+        return this.res.items;
+      })
+    );
+  }
+
   add_event(event: any, cal_id?: string) {
     console.log(event);
     let base_url = "/calendar/v3/calendars/primary/events";

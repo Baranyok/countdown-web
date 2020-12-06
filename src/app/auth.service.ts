@@ -73,7 +73,6 @@ export class AuthService {
   }
 
   getToken() {
-    console.log(this.authInstance.currentUser.get().getAuthResponse().access_token);
     return this.authInstance.currentUser.get().getAuthResponse().access_token;
   }
 
