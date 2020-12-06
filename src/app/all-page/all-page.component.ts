@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from '../calendar.service';
 import { AppComponent } from '../app.component';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-all-page',
@@ -8,9 +9,6 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./all-page.component.scss']
 })
 export class AllPageComponent implements OnInit {
-
-  private auth_token;
-
   public calendars;
   selected_cal;
   selected_color: string;
@@ -18,19 +16,18 @@ export class AllPageComponent implements OnInit {
   public events;
 
   constructor(
-    public auth: AppComponent,
+    public authService: AuthService,
     private cal: CalendarService) { }
 
   async ngOnInit() {
-    if (await this.auth.checkIfUserAuthenticated()) {
-      this.auth_token = this.auth.authInstance.currentUser.get().getAuthResponse().access_token;
+    if (await this.authService.isUser()) {
       this.get();
     }
   }
 
   async get() {
     if (!this.calendars) {
-      this.cal.get_calendars(this.auth_token).subscribe(res => {
+      this.cal.get_calendars().subscribe(res => {
         this.calendars = res;
         this.selected_cal = res[0];
       });
@@ -39,8 +36,8 @@ export class AllPageComponent implements OnInit {
 
   async get_events() {
     console.log(this.selected_cal.id);
-    if (this.selected_cal && this.auth_token) {
-      this.cal.get_events(this.auth_token, this.selected_cal.id).subscribe(res => {
+    if (this.selected_cal != null) {
+      this.cal.get_events(this.selected_cal.id).subscribe(res => {
         this.events = res;
         console.log(this.events);
       });

@@ -3,6 +3,7 @@ import { AppComponent } from '../app.component';
 import { CalendarService } from '../calendar.service';
 
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -12,10 +13,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class AddPageComponent implements OnInit {
   eventForm;
-  auth_token;
 
   constructor(
-    public auth: AppComponent,
+    public authService: AuthService,
     private calendarService: CalendarService,
     private formBuilder: FormBuilder
   ) {
@@ -26,7 +26,6 @@ export class AddPageComponent implements OnInit {
     })
   }
   ngOnInit() {
-    this.auth_token = this.auth.authInstance.currentUser.get().getAuthResponse().access_token;
   }
 
   formatDate(date: Date) {
@@ -54,8 +53,6 @@ export class AddPageComponent implements OnInit {
       }
 
       this.calendarService.add_event(
-        this.auth_token,
-        "",
         event
       );
     } else {

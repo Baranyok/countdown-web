@@ -2,9 +2,8 @@
   <mat-drawer #drawer mode="side" hasBackdrop="false" opened="true">
     <mat-toolbar class="mat-elevation-z3">
 
-      <div></div>
-      <img *ngIf="user" src="{{ user.getBasicProfile().getImageUrl() }}">
-      <span>{{user ? user.getBasicProfile().getName() : 'Unknown user'}}</span>
+      <img *ngIf="authService.isUser()" src="{{ authService.user.getBasicProfile().getImageUrl() }}">
+      <span>{{authService.isUser() ? authService.user.getBasicProfile().getName() : 'Unknown user'}}</span>
       <span class="example-spacer"></span>
       <button mat-icon-button (click)="authenticate()">
         <mat-icon [matTooltip]="user ? 'Logout' : 'Login'">login</mat-icon>
@@ -13,13 +12,13 @@
     </mat-toolbar>
 
     <mat-list>
-      <a mat-list-item routerLink="all" [class]="currentSite === '/all' ? 'active' : ''">
-        <mat-icon>list</mat-icon>
-        All events
-      </a>
       <a mat-list-item routerLink="add" [class]="currentSite === '/add' ? 'active' : ''">
         <mat-icon>add</mat-icon>
         Add event
+      </a>
+      <a mat-list-item routerLink="all" [class]="currentSite === '/all' ? 'active' : ''">
+        <mat-icon>list</mat-icon>
+        All events
       </a>
 
     </mat-list>
@@ -32,7 +31,7 @@
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <h1>Countdown</h1>
+        <h1><a routerLink="">Countdown</a></h1>
       </mat-toolbar-row>
     </mat-toolbar>
     <div class="body-wrapper">

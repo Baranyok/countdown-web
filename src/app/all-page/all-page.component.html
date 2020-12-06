@@ -1,7 +1,7 @@
-<div class="content" *ngIf="auth.user">
+<div class="content" *ngIf="authService.isUser()">
   <mat-form-field appearance="fill">
     <mat-label>Select Calendar</mat-label>
-    <mat-select placeholder="Select calendar">
+    <mat-select *ngIf="calendars" placeholder="Select calendar">
       <mat-select-trigger>
         <mat-icon>today</mat-icon>
         {{selected_cal.summary}}
@@ -16,7 +16,7 @@
 
   <button mat-flat-button mat-color="accent" (click)="get_events()">Get events</button>
 
-  <mat-card>
+  <mat-card *ngif="events">
     <mat-list-item *ngFor="let event of events">
       <div class="event">
         <mat-icon mat-list-icon>calendar_today</mat-icon>
@@ -30,11 +30,10 @@
   </mat-card>
 </div>
 
-<div style="height: 70vh;" class="loader" *ngIf="!auth.user">
+<div style="height: 70vh;" class="loader" *ngIf="!authService.isUser()">
   <div class="loader-icon">
     <div class="loader-inner"></div>
   </div>
 </div>
 
-<div style="height: 70vh;"></div>
 <!--FILLER-->
