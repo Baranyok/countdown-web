@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPageComponent } from './add-page/add-page.component';
 import { AllPageComponent } from './all-page/all-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { EventComponent } from './event/event.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     AddPageComponent,
     AllPageComponent,
     ErrorPageComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,
