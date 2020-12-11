@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div>
+    <h2 mat-display-1>10</h2>
+    <span class="label">days</span>
+  </div>
+
+  <div>
+    <h2 mat-display-1>2</h2>
+    <span class="label">months</span>
+  </div>
+
+  <div>
+    <h2 mat-display-1>0</h2>
+    <span class="label">years</span>
+  </div>
+</div>
+
+<h3>Remaining until {{ event.summary }}</h3>
+
+<mat-dialog-actions>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Event countdown link</mat-label>
+    <input matInput value="{{url}}">
+  </mat-form-field>
+  <button mat-flat-button color="primary" [cdkCopyToClipboard]="url">
+    Copy link to clipboard
+  </button>
+
+</mat-dialog-actions>

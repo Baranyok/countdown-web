@@ -27,7 +27,7 @@
     <div class=" clear">
     </div>
 
-    <div *ngFor="let event of events">
+    <div *ngFor="let event of events" (click)="openDialog(event)">
       <div class="event">
         <div class="event-info">
           <mat-icon mat-list-icon>calendar_today</mat-icon>

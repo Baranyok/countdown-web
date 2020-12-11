@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router, Routes } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { AuthService } from '../auth.service';
 import { CalendarService } from '../calendar.service';
+import { EventDialogComponent } from '../event-dialog/event-dialog.component'
 
 @Component({
   selector: 'app-all-page',
@@ -17,7 +20,10 @@ export class AllPageComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private calendarService: CalendarService) { }
+    private calendarService: CalendarService,
+    public dialog: MatDialog,
+    private router: Router
+  ) { }
 
   async ngOnInit() {
     if (await this.authService.checkIfUserAuthenticated()) {
@@ -57,6 +63,14 @@ export class AllPageComponent implements OnInit {
     this.selected_calendar = calendar;
     this.selected_color = colors[calendar.color];
     this.get_events();
+  }
+
+  openDialog(event) {
+    let dialog = this.dialog.open(EventDialogComponent, {
+      data: {
+        event
+      }
+    })
   }
 
 }

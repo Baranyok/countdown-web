@@ -17,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 
 // Components
@@ -28,6 +30,7 @@ import { AddPageComponent } from './add-page/add-page.component';
 import { AllPageComponent } from './all-page/all-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { EventComponent } from './event/event.component';
+import { EventDialogComponent } from './event-dialog/event-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { EventComponent } from './event/event.component';
     AllPageComponent,
     ErrorPageComponent,
     EventComponent,
+    EventDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,8 +53,10 @@ import { EventComponent } from './event/event.component';
     MatMenuModule,
     MatIconModule,
     MatNativeDateModule,
+    ClipboardModule,
     MatCardModule,
     MatInputModule,
+    MatDialogModule,
     MatDatepickerModule,
     MatListModule,
     MatSelectModule,

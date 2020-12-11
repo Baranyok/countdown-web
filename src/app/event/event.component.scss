@@ -5,4 +5,55 @@
   align-items: center;
 
   height: 100%;
+  margin-bottom: 100px;
+
+  &.style1 {
+    text-align: center;
+
+    mat-card {
+      margin: 1em;
+    }
+
+    h2 {
+      font-size: 75px;
+      padding: .5em;
+      padding-bottom: .1em;
+      padding-top: .25em;
+    }
+
+    .label {
+      font-family: 'Roboto';
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  }
+
+  &.style2 {
+
+    mat-card {
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        margin: 0 1em;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 75px;
+        padding: .5em;
+        padding-bottom: .1em;
+        padding-top: .25em;
+      }
+
+
+      .label {
+        font-family: 'Roboto';
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+    }
+  }
 }
