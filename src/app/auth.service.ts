@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { InfoBarComponent } from './info-bar/info-bar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,9 @@ export class AuthService {
   public error: string;
   public user: gapi.auth2.GoogleUser;
 
-  constructor() { }
+  constructor(
+    private snackBar: MatSnackBar
+  ) { }
 
   async initGoogleAuth(): Promise<void> {
     //  Create a new Promise where the resolve
@@ -51,8 +55,17 @@ export class AuthService {
         await this.authInstance.signIn().then(
           user => {
             this.user = user;
+            this.snackBar.openFromComponent(InfoBarComponent, {
+              data: "Login successful",
+              duration: 2000
+            });
           },
-          error => this.error = error);
+          error => {
+            this.snackBar.openFromComponent(InfoBarComponent, {
+              data: "Login failed",
+              duration: 2000
+            });
+          });
 
       });
     }
@@ -69,6 +82,10 @@ export class AuthService {
       return true;
     }
 
+    this.snackBar.openFromComponent(InfoBarComponent, {
+      data: "Login check failed. Please log in",
+      duration: 2000
+    });
     return false;
   }
 

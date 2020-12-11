@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 // Components
@@ -31,6 +32,7 @@ import { AllPageComponent } from './all-page/all-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { EventComponent } from './event/event.component';
 import { EventDialogComponent } from './event-dialog/event-dialog.component';
+import { InfoBarComponent } from './info-bar/info-bar.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { EventDialogComponent } from './event-dialog/event-dialog.component';
     ErrorPageComponent,
     EventComponent,
     EventDialogComponent,
+    InfoBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { EventDialogComponent } from './event-dialog/event-dialog.component';
     MatTooltipModule,
     ReactiveFormsModule,
     MatMenuModule,
+    MatSnackBarModule,
     MatIconModule,
     MatNativeDateModule,
     ClipboardModule,

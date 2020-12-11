@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientJsonpModule, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpClientJsonpModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { catchError, map, retry, tap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { InfoBarComponent } from './info-bar/info-bar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { throwError } from 'rxjs';
 
 
 @Injectable({
@@ -17,7 +20,8 @@ export class CalendarService {
   error;
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) { }
 
   get_calendars() {
@@ -125,8 +129,20 @@ export class CalendarService {
       base_url,
       event,
       { headers }
-    ).subscribe((res) => {
-      console.log(res);
+    ).subscribe({
+      next: res => {
+        this.snackBar.openFromComponent(InfoBarComponent, {
+          data: "Request successful",
+          duration: 2000
+        })
+        console.log(res);
+      },
+      error: error => {
+        this.snackBar.openFromComponent(InfoBarComponent, {
+          data: "Request failed",
+          duration: 2000
+        })
+      }
     })
   }
 

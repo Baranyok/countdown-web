@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { InfoBarComponent } from './info-bar/info-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,7 @@ export class AppComponent {
 
   constructor(
     public router: Router,
-    public authService: AuthService
+    public authService: AuthService,
   ) {
     router.events.subscribe((event: NavigationEnd) => {
       this.currentSite = this.router.url;
