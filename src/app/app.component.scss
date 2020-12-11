@@ -1,10 +1,23 @@
 
 .mat-drawer {
   min-width: 300px;
+  position: fixed;
 }
 
 .mat-drawer-content {
   min-height: 100vh;
+  overflow: hidden;
+
+  mat-toolbar {
+    position: fixed;
+    z-index: 100;
+  }
+
+  .body-wrapper {
+    position: relative;
+    top: 65px;
+    margin-bottom: 70px;
+  }
 }
 
 .body-wrapper {
