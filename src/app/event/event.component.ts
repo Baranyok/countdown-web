@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { CalendarService } from '../calendar.service';
 
 @Component({
@@ -12,14 +13,18 @@ export class EventComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private authService: AuthService,
     private calendarService: CalendarService
   ) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe((res) => {
-      console.log(res);
-      this.calendarService.get_event(res.cal, res.event);
-    });
+  async ngOnInit() {
+    if (await this.authService.checkIfUserAuthenticated()) {
+
+      this.route.params.subscribe((res) => {
+        console.log(res);
+        this.calendarService.get_event(res.cal, res.event);
+      });
+    }
   }
 
 }

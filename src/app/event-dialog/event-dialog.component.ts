@@ -1,9 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Calendar } from '../all-page/all-page.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface Event {
-  event: Event;
   summary: string;
   id: string;
 }
@@ -17,7 +15,7 @@ export interface Event {
 export class EventDialogComponent implements OnInit {
   url: string;
   private calendar: string;
-  private event;
+  public event: Event;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
   ) { }

@@ -21,10 +21,10 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Event countdown link</mat-label>
-    <input matInput value="{{url}}">
+    <input matInput value="{{url}}" readonly>
   </mat-form-field>
-  <button mat-flat-button color="primary" [cdkCopyToClipboard]="url">
-    Copy link to clipboard
+  <button mat-fab color="primary" [cdkCopyToClipboard]="url" matTooltip="Copy link to clipboard">
+    <mat-icon>content_copy</mat-icon>
   </button>
 
 </mat-dialog-actions>

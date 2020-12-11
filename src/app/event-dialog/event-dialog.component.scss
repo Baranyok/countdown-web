@@ -34,5 +34,13 @@ mat-dialog-actions {
   mat-form-field {
     width: 400px;
     margin-right: 1em;
+
+    input {
+      text-overflow: ellipsis;
+    }
+  }
+
+  button {
+    margin-bottom: 1em;
   }
 }
