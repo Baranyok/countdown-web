@@ -27,9 +27,9 @@
     <div class=" clear">
     </div>
 
-    <div *ngFor="let event of events" (click)="openDialog(event)">
+    <div *ngFor="let event of events">
       <div class="event">
-        <div class="event-info">
+        <div class="event-info" (click)="openDialog(event)">
           <mat-icon mat-list-icon>calendar_today</mat-icon>
           <div>
             <div mat-line>{{event.summary}}</div>
@@ -37,10 +37,10 @@
           </div>
         </div>
         <div class="event-buttons">
-          <button mat-mini-fab color="primary">
+          <button mat-mini-fab color="primary" (click)="editEvent(event)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-mini-fab color="warn">
+          <button mat-mini-fab color="warn" (click)="deleteEvent(event)">
             <mat-icon>delete</mat-icon>
           </button>
         </div>

@@ -73,4 +73,12 @@ export class AllPageComponent implements OnInit {
     })
   }
 
+  editEvent(event) {
+    console.log('edit', event);
+  }
+
+  deleteEvent(event) {
+    console.log('delete', event);
+  }
+
 }

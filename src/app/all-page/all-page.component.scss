@@ -8,10 +8,11 @@ mat-select-trigger mat-icon {
   display: flex;
   justify-content: space-between;
   padding: 1.75em 1em;
-  cursor: pointer;
 
   .event-info {
     display: flex;
+    flex: 1;
+    cursor: pointer;
 
     mat-icon {
       margin-top: .25em;
@@ -19,6 +20,10 @@ mat-select-trigger mat-icon {
   }
 
   .event-buttons {
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+
 
     button {
       margin: 0 .25em;

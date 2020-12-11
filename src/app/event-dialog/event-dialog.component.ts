@@ -1,7 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { worker } from 'cluster';
 
 export interface Event {
   event: Event;
@@ -19,8 +17,6 @@ export class EventDialogComponent implements OnInit {
   url: string;
   constructor(
     @Inject(MAT_DIALOG_DATA) public event: Event,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
