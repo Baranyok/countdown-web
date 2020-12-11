@@ -1,21 +1,21 @@
 <div class="wrapper">
   <div>
-    <h2 mat-display-1>10</h2>
+    <h2 mat-display-1>{{ countdown.days }}</h2>
     <span class="label">days</span>
   </div>
 
   <div>
-    <h2 mat-display-1>2</h2>
+    <h2 mat-display-1>{{ countdown.months }}</h2>
     <span class="label">months</span>
   </div>
 
   <div>
-    <h2 mat-display-1>0</h2>
+    <h2 mat-display-1>{{ countdown.years }}</h2>
     <span class="label">years</span>
   </div>
 </div>
 
-<h3>Remaining until {{ event.summary }}</h3>
+<h3>{{ countdown.type }} {{ event.summary }}</h3>
 
 <mat-dialog-actions>
 
