@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, Routes } from '@angular/router';
-import { AppComponent } from '../app.component';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CalendarService } from '../calendar.service';
 import { EventDialogComponent } from '../event-dialog/event-dialog.component'
+
+export interface Calendar {
+  id: string;
+}
 
 @Component({
   selector: 'app-all-page',
@@ -13,7 +16,7 @@ import { EventDialogComponent } from '../event-dialog/event-dialog.component'
 })
 export class AllPageComponent implements OnInit {
   public calendars;
-  selected_calendar;
+  public selected_calendar: Calendar;
   selected_color: string;
 
   public events;
@@ -27,15 +30,20 @@ export class AllPageComponent implements OnInit {
 
   async ngOnInit() {
     if (await this.authService.checkIfUserAuthenticated()) {
-      this.get_primary_events();
-      this.get_calendars();
+      await this.get_primary_events();
+      await this.get_calendars();
     }
   }
 
   async get_calendars() {
     this.calendarService.get_calendars().subscribe(res => {
       this.calendars = res;
-      this.selected_calendar = res[0];
+      this.calendars.forEach(cal => {
+        if (cal.primary == true) {
+          this.selected_calendar = cal;
+          console.log('selected');
+        }
+      });
     });
   }
 
@@ -49,7 +57,6 @@ export class AllPageComponent implements OnInit {
   async get_primary_events() {
     this.calendarService.get_primary_events().subscribe(res => {
       this.events = res;
-      console.log(this.events);
     });
   }
 
@@ -68,7 +75,8 @@ export class AllPageComponent implements OnInit {
   openDialog(event) {
     let dialog = this.dialog.open(EventDialogComponent, {
       data: {
-        event
+        event: event,
+        calendar: this.selected_calendar.id
       }
     })
   }

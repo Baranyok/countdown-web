@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Calendar } from '../all-page/all-page.component';
 
 export interface Event {
   event: Event;
@@ -15,13 +16,16 @@ export interface Event {
 })
 export class EventDialogComponent implements OnInit {
   url: string;
+  private calendar: string;
+  private event;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public event: Event,
+    @Inject(MAT_DIALOG_DATA) public data,
   ) { }
 
   ngOnInit(): void {
-    this.event = this.event.event;
-    this.url = window.location.hostname + ":" + window.location.port + "/event/" + this.event.id;
+    this.event = this.data.event;
+    this.calendar = this.data.calendar;
+    this.url = window.location.hostname + ":" + window.location.port + "/event/" + this.calendar + "/" + this.event.id;
   }
 
 

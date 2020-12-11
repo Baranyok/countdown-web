@@ -130,4 +130,22 @@ export class CalendarService {
     })
   }
 
+  get_event(calendar: string, event: string) {
+    let base_url = "/calendar/v3/calendars/" + calendar + "/events/" + event;
+
+    let headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methodss', 'GET')
+      .set('Authorization', 'Bearer ' + this.authService.getToken());
+
+    return this.http.get(
+      base_url,
+      { headers }
+    ).subscribe(res => {
+      console.log(res);
+      return res;
+    })
+
+  }
+
 }

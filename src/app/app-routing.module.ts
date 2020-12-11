@@ -8,7 +8,7 @@ import { EventComponent } from './event/event.component';
 const routes: Routes = [
   { path: 'add', component: AddPageComponent },
   { path: 'all', component: AllPageComponent },
-  { path: 'event/:id', component: EventComponent },
+  { path: 'event/:cal/:event', component: EventComponent },
   { path: '', redirectTo: '/add', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent }
 ];

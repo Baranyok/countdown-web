@@ -19,6 +19,7 @@
 
 
   <mat-card *ngIf="events">
+    <h2 class="left">{{selected_calendar.summary}}</h2>
     <button mat-flat-button color="primary" class="right" mat-button [matMenuTriggerFor]="menu">Change calendar</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngFor="let calendar of calendars"
@@ -30,19 +31,28 @@
     <div *ngFor="let event of events">
       <div class="event">
         <div class="event-info" (click)="openDialog(event)">
+
           <mat-icon mat-list-icon>calendar_today</mat-icon>
           <div>
             <div mat-line>{{event.summary}}</div>
             <div mat-line> {{event.start.dateTime | date }} </div>
           </div>
+
         </div>
         <div class="event-buttons">
-          <button mat-mini-fab color="primary" (click)="editEvent(event)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-mini-fab color="warn" (click)="deleteEvent(event)">
-            <mat-icon>delete</mat-icon>
-          </button>
+
+          <a href="{{event.htmlLink}}" target="_blank">
+            <button mat-mini-fab color="primary" (click)="editEvent(event)" routerLink="">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </a>
+
+          <a href="{{event.htmlLink}}" target="_blank">
+            <button mat-mini-fab color="warn" (click)="deleteEvent(event)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </a>
+
         </div>
       </div>
 
