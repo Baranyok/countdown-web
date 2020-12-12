@@ -135,7 +135,6 @@ export class CalendarService {
           data: "Request successful",
           duration: 2000
         })
-        console.log(res);
       },
       error: error => {
         this.snackBar.openFromComponent(InfoBarComponent, {
@@ -157,11 +156,11 @@ export class CalendarService {
     return this.http.get(
       base_url,
       { headers }
-    ).subscribe(res => {
-      console.log(res);
-      return res;
-    })
-
+    ).pipe(
+      map(res => {
+        return res;
+      })
+    );
   }
 
 }
