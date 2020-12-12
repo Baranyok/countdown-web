@@ -41,7 +41,6 @@ export class AllPageComponent implements OnInit {
       this.calendars.forEach(cal => {
         if (cal.primary == true) {
           this.selected_calendar = cal;
-          console.log('selected');
         }
       });
     });

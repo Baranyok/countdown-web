@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CalendarService } from '../calendar.service';
 import { CountdownService } from '../countdown.service';
@@ -20,6 +20,7 @@ export class EventComponent implements OnInit {
     private authService: AuthService,
     private calendarService: CalendarService,
     private countdownService: CountdownService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -29,8 +30,6 @@ export class EventComponent implements OnInit {
         this.getEvent(res.cal, res.event);
       });
 
-      console.log(this.countdown);
-
       this.interval = setInterval(() => this.countDown(), 1000);
 
     }
@@ -39,7 +38,9 @@ export class EventComponent implements OnInit {
   getEvent(cal, event) {
     this.calendarService.get_event(cal, event).subscribe(res => {
       this.event = res;
-
+      if (!res) {
+        this.router.navigate(['/404'], { relativeTo: this.route });
+      }
       this.countdown = this.countdownService.getCountdown(this.event);
     })
   }

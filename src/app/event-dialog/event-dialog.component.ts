@@ -51,6 +51,8 @@ export class EventDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.event = this.data.event;
+
+    console.log(this.event);
     this.calendar = this.data.calendar;
     this.url = window.location.hostname + ":" + window.location.port + "/event/" + this.calendar + "/" + this.event.id;
 
