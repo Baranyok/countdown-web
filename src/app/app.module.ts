@@ -20,6 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 // Components
@@ -49,6 +50,7 @@ import { InfoBarComponent } from './info-bar/info-bar.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    MatSlideToggleModule,
     MatSidenavModule,
     MatButtonModule,
     MatTooltipModule,

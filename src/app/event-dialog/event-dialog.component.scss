@@ -1,9 +1,19 @@
+
+.toggle {
+  width: 100%;
+  margin-bottom: .5em;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+
 .wrapper {
   display: flex;
   justify-content: space-between;
 
   div {
-    margin: 1em;
+    margin: 1em 0;
     text-align: center;
   }
 

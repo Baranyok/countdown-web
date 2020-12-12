@@ -5,14 +5,30 @@ import { CountdownService } from '../countdown.service';
 export interface Event {
   summary: string;
   id: string;
+
+  start: {
+    date,
+    dateTime
+  },
+
+  end: {
+    date,
+    dateTime
+  }
 }
 
 export interface Countdown {
+  seconds: number,
+  minutes: number,
+  hours: number,
+
   days: number,
   months: number,
   years: number,
 
-  type: string,
+  time: boolean,
+  type?: 'current' | 'future' | 'past',
+
 }
 
 @Component({
@@ -25,6 +41,9 @@ export class EventDialogComponent implements OnInit {
   url: string;
   private calendar: string;
   public event: Event;
+
+  private interval;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     private coutndownService: CountdownService
@@ -37,8 +56,35 @@ export class EventDialogComponent implements OnInit {
 
     this.countdown = this.coutndownService.getCountdown(this.event);
     console.log(this.countdown);
+
+    this.interval = setInterval(() => this.countDown(), 1000);
   }
 
+  toggleTime() {
+    this.countdown.time = !this.countdown.time;
+  }
 
+  countDown() {
+    if (this.countdown.type == "past") {
+      this.countdown.seconds++;
+    } else {
+      this.countdown.seconds--;
+    }
+
+    this.countdown = this.coutndownService.editCountdown(
+      this.countdown.type == "past" ? (
+        this.event.end.dateTime == null ? new Date(this.event.end.date) :
+          new Date(this.event.end.dateTime)) : (
+          this.event.start.dateTime == null ? new Date(this.event.start.date) :
+            new Date(this.event.start.dateTime
+            )
+        ),
+      this.countdown
+    )
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
+  }
 
 }
