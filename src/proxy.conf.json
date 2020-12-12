@@ -2,7 +2,7 @@
   "/calendar": {
     "target": {
       "host": "www.googleapis.com",
-      "protocol": "https:"
+      "protocol": "https"
     },
     "pathRewrite": {
       "/api": "www.googleapis.com/calendar"
