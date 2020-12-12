@@ -100,7 +100,7 @@ export class CountdownService {
 
     if (edited.seconds <= 0) {
       edited.minutes--;
-      edited.seconds += 59;
+      edited.seconds = 59;
     } else if (edited.seconds >= 60) {
       edited.seconds = 1;
       edited.minutes++;
@@ -108,7 +108,7 @@ export class CountdownService {
 
     if (edited.minutes < 0) {
       edited.hours--;
-      edited.minutes += 59;
+      edited.minutes = 59;
     } else if (edited.minutes >= 60) {
       edited.minutes = 0;
       edited.hours++;
@@ -116,7 +116,7 @@ export class CountdownService {
 
     if (edited.hours < 0) {
       edited.days--;
-      edited.hours += 23;
+      edited.hours = 23;
     } else if (edited.hours >= 24) {
       edited.hours = 0;
       edited.days++;
@@ -132,7 +132,7 @@ export class CountdownService {
 
     if (edited.months < 0) {
       edited.years--;
-      edited.months += 11;
+      edited.months = 11;
     } else if (edited.months > 12) {
       edited.months = 0;
       edited.years++;

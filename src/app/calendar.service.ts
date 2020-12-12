@@ -158,6 +158,7 @@ export class CalendarService {
       { headers }
     ).pipe(
       map(res => {
+        console.log(res);
         return res;
       })
     );
