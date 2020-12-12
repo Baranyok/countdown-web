@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from './auth.service';
+import { InfoBarComponent } from './info-bar/info-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +10,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Countdown';
-  mode = true;
+  public mobile = false;
+  public currentSite;
+  public user;
+
+  constructor(
+    public router: Router,
+    public authService: AuthService,
+  ) {
+    router.events.subscribe((event: NavigationEnd) => {
+      this.currentSite = this.router.url;
+    });
+  }
+
+  async ngOnInit() {
+    await this.authService.checkIfUserAuthenticated();
+  }
+
+  authenticate() {
+    return this.authService.authenticate();
+  }
+
 }

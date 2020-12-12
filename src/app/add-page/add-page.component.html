@@ -1,0 +1,35 @@
+<mat-card *ngIf="authService.isUser()">
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field MatFormFieldControl="eventName" appearance="fill" floatLabel>
+      <mat-label>Event name</mat-label>
+      <input matInput formControlName="eventName" required>
+    </mat-form-field>
+
+    <mat-form-field MatFormFieldControl="eventStart" appearance="fill" floatLabel>
+      <mat-label>Start date</mat-label>
+      <input matInput [matDatepicker]="startDate" required formControlName="eventStart">
+      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker touchUi="mobile" #startDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field MatFormFieldControl="eventEnd" appearance="fill" floatLabel>
+      <mat-label>End date</mat-label>
+      <input matInput [matDatepicker]="endDate" formControlName="eventEnd">
+      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+      <mat-datepicker touchUi="mobile" #endDate></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary">
+      Add event
+    </button>
+
+  </form>
+
+</mat-card>
+
+<div style="height: 70vh;" class="loader" *ngIf="!authService.isUser()">
+  <div class=" loader-icon">
+    <div class="loader-inner"></div>
+  </div>
+</div>

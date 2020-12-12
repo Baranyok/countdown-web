@@ -1,0 +1,57 @@
+<div class="toggle">
+  <mat-slide-toggle color="primary" value="countdown.time" (change)="toggleTime()">
+    Display time
+  </mat-slide-toggle>
+</div>
+
+<div class="wrapper">
+
+  <!-- TIME  -->
+  <div *ngIf="countdown.time">
+    <h2 mat-display-1>{{ countdown.seconds }}</h2>
+    <span class="label">{{countdown.seconds == 1 ? 'second' : 'seconds'}}</span>
+  </div>
+
+  <div *ngIf="countdown.time">
+    <h2 mat-display-1>{{ countdown.minutes }}</h2>
+    <span class="label">{{countdown.minutes == 1 ? 'minute' : 'minutes'}}</span>
+  </div>
+
+  <div *ngIf="countdown.time">
+    <h2 mat-display-1>{{ countdown.hours }}</h2>
+    <span class="label">{{countdown.hours == 1 ? 'hour' : 'hours'}}</span>
+  </div>
+
+  <!-- DATE -->
+  <div>
+    <h2 mat-display-1>{{ countdown.days }}</h2>
+    <span class="label">{{countdown.days == 1 ? 'day' : 'days'}}</span>
+  </div>
+
+  <div>
+    <h2 mat-display-1>{{ countdown.months }}</h2>
+    <span class="label">{{ countdown.months == 1 ? 'month' : 'months'}}</span>
+  </div>
+
+  <div>
+    <h2 mat-display-1>{{ countdown.years }}</h2>
+    <span class="label">{{ countdown.years == 1 ? 'year' : 'years'}}</span>
+  </div>
+</div>
+
+<h3>
+  {{ countdown.type == 'current' ? 'until end of ' : (countdown.type == 'past' ? 'since ' : 'until ') }}
+  <span>{{ event.summary }}</span>
+</h3>
+
+<mat-dialog-actions>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Event countdown link</mat-label>
+    <input matInput value="{{url}}" readonly>
+  </mat-form-field>
+  <button mat-fab color="primary" [cdkCopyToClipboard]="url" matTooltip="Copy link to clipboard">
+    <mat-icon>content_copy</mat-icon>
+  </button>
+
+</mat-dialog-actions>

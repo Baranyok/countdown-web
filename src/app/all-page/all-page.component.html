@@ -1,0 +1,89 @@
+<div class="content" *ngIf="authService.isUser()">
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Select Calendar</mat-label>
+    <mat-select *ngIf="calendars" placeholder="Select calendar">
+      <mat-select-trigger>
+        <mat-icon>today</mat-icon>
+        {{selected_cal.summary}}
+      </mat-select-trigger>
+      <mat-option *ngFor="let calendar of calendars" (click)="set_cal(calendar)" value="{{calendar.etaq}}"
+        selected="calendar == selected_cal">
+        <mat-icon>today</mat-icon>
+        {{calendar.summary}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-flat-button mat-color="accent" (click)="get_events()">Get events</button> -->
+
+
+
+  <mat-card *ngIf="events">
+    <h2 class="left">{{selected_calendar.summary}}</h2>
+    <button mat-flat-button color="primary" class="right" mat-button [matMenuTriggerFor]="menu">Change calendar</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let calendar of calendars" (click)="set_calendar(calendar)">{{ calendar.summary
+        }}</button>
+    </mat-menu>
+    <div class=" clear">
+    </div>
+
+    <div *ngFor="let event of events">
+      <div class="event">
+        <div class="event-info" (click)="openDialog(event)">
+
+          <mat-icon mat-list-icon>calendar_today</mat-icon>
+          <div>
+            <div mat-line class="eventName">{{event.summary}}</div>
+            <div mat-line *ngIf="event.start.dateTime">
+              {{ event.start.dateTime | date:'MMM dd, yyyy H:m' }}
+              <span *ngIf="event.start.dateTime != event.end.dateTime">
+                - {{ event.start.dateTime | date:'MMM dd, yyyy H:m' }}
+              </span>
+            </div>
+            <div mat-line *ngIf="event.start.date">
+              {{ event.start.date | date }}
+              <span *ngIf="event.start.date != event.end.date">
+                - {{ event.end.date == event.start.date ? "" : event.end.date | date }}
+              </span>
+            </div>
+          </div>
+
+        </div>
+        <div class="event-buttons">
+
+          <a href="{{event.htmlLink}}" target="_blank">
+            <button mat-mini-fab color="primary" (click)="editEvent(event)" routerLink="">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </a>
+
+          <a href="{{event.htmlLink}}" target="_blank">
+            <button mat-mini-fab color="warn" (click)="deleteEvent(event)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+  </mat-card>
+
+  <mat-card *ngIf="!events">
+    <div class="loader">
+      <div class="loader-icon">
+        <div class="loader-inner"></div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<div style="height: 70vh;" class="loader" *ngIf="!authService.isUser()">
+  <div class="loader-icon">
+    <div class="loader-inner"></div>
+  </div>
+</div>
+
+<!--FILLER-->

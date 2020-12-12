@@ -1,0 +1,14 @@
+{
+  "/calendar": {
+    "target": {
+      "host": "www.googleapis.com",
+      "protocol": "https:"
+    },
+    "pathRewrite": {
+      "/api": "www.googleapis.com/calendar"
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  }
+}

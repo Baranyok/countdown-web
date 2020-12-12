@@ -1,0 +1,42 @@
+mat-select-trigger mat-icon {
+  vertical-align: middle;
+  margin-right: .5em;
+}
+
+
+.event {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.75em 1em;
+
+  .event-info {
+    display: flex;
+    flex: 1;
+    cursor: pointer;
+
+    mat-icon {
+      margin-top: .25em;
+      margin-right: .5em;
+    }
+
+    .eventName {
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+  }
+
+  .event-buttons {
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+
+
+    button {
+      margin: 0 .25em;
+    }
+  }
+
+  &:hover {
+    background: #f9f9f9;
+  }
+}
