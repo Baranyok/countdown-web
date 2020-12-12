@@ -1,21 +1,21 @@
 <div class="wrapper">
   <div>
     <h2 mat-display-1>{{ countdown.days }}</h2>
-    <span class="label">days</span>
+    <span class="label">{{countdown.days == 1 ? 'day' : 'days'}}</span>
   </div>
 
   <div>
     <h2 mat-display-1>{{ countdown.months }}</h2>
-    <span class="label">months</span>
+    <span class="label">{{ countdown.months == 1 ? 'month' : 'months'}}</span>
   </div>
 
   <div>
     <h2 mat-display-1>{{ countdown.years }}</h2>
-    <span class="label">years</span>
+    <span class="label">{{ countdown.years == 1 ? 'year' : 'years'}}</span>
   </div>
 </div>
 
-<h3>{{ countdown.type }} {{ event.summary }}</h3>
+<h3>{{ countdown.type }} <span>{{ event.summary }}</span></h3>
 
 <mat-dialog-actions>
 
