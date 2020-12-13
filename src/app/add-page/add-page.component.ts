@@ -95,7 +95,7 @@ export class AddPageComponent implements OnInit {
 
   setEvent() {
     this.event = {
-      name: '',
+      summary: '',
       description: '',
       start: {},
       end: {}
@@ -142,12 +142,14 @@ export class AddPageComponent implements OnInit {
 
   showCountdown() {
     if (this.eventForm.status === "VALID") {
-      this.setEvent();
+      if (!this.event.id) {
+        this.setEvent();
+      }
 
       this.dialog.open(EventDialogComponent, {
         data: {
           event: this.event,
-          calendar: this.calendar.id
+          calendar: this.calendar == '' ? 'primary' : this.calendar
         }
       })
     }
