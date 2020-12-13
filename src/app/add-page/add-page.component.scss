@@ -1,0 +1,39 @@
+
+mat-card-title {
+  padding: .5em 0;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .full {
+    flex-basis: 100%;
+  }
+
+  &.small {
+    .half {
+      flex-basis:  100%;
+    }
+  }
+
+  &.large {
+    .half {
+      width: 49%;
+    }
+  }
+
+
+  div {
+    button {
+      margin-right: .5em;
+    }
+  }
+
+  .mat-icon-no-color {
+    opacity: 0.7;
+}
+
+}
+
