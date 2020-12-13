@@ -6,7 +6,7 @@
 
 
 $light-theme-primary: mat-palette($mat-indigo, 700, 300, 900);
-$light-theme-accent: mat-palette($mat-amber);
+$light-theme-accent: mat-palette($mat-pink, 600);
 $light-theme-warn: mat-palette($mat-red);
 
 $light-theme: mat-light-theme((
@@ -31,7 +31,7 @@ $light-theme: mat-light-theme((
 
 
 $dark-theme-primary: mat-palette($mat-indigo, 900);
-$dark-theme-accent: mat-palette($mat-amber, 700);
+$dark-theme-accent: mat-palette($mat-pink, 800);
 $dark-theme-warn: mat-palette($mat-red, 900);
 
 $dark-theme: mat-dark-theme((

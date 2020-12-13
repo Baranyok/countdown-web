@@ -1,7 +1,7 @@
 <div *ngIf="countdown">
   <div class="toggle">
-    <mat-slide-toggle color="primary" value="countdown.time" (change)="toggleTime()">
-      Display time
+    <mat-slide-toggle color="accent" value="countdown.time" (change)="toggleTime()">
+      {{countdown.time ? 'Hide' : 'Show'}} time
     </mat-slide-toggle>
   </div>
 
