@@ -7,9 +7,11 @@ import { AuthService } from '../auth.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { InfoBarComponent } from '../info-bar/info-bar.component';
+import { MatDialog } from '@angular/material/dialog';
+import { EventDialogComponent } from '../event-dialog/event-dialog.component';
 
 interface myEvent {
-  name: string,
+  summary: string,
   description: string,
   start: {
     date?: string,
@@ -40,8 +42,8 @@ export class AddPageComponent implements OnInit {
     private calendarService: CalendarService,
     private formBuilder: FormBuilder,
     private breakpointObserver: BreakpointObserver,
-    private snackBar: MatSnackBar
-
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {
     this.eventForm = this.formBuilder.group({
       eventName: '',
@@ -98,7 +100,7 @@ export class AddPageComponent implements OnInit {
       start: {},
       end: {}
     };
-    this.event.name = this.eventForm.controls.eventName.value;
+    this.event.summary = this.eventForm.controls.eventName.value;
     this.event.description = this.eventForm.controls.eventDesc.value;
 
     if (this.eventForm.controls.eventStartTime.value !== "" && this.eventForm.controls.eventEndTime !== "") {
@@ -139,8 +141,15 @@ export class AddPageComponent implements OnInit {
   }
 
   showCountdown() {
-    if (this.eventForm.statur === "VALID") {
+    if (this.eventForm.status === "VALID") {
       this.setEvent();
+
+      this.dialog.open(EventDialogComponent, {
+        data: {
+          event: this.event,
+          calendar: this.calendar.id
+        }
+      })
     }
   }
 }

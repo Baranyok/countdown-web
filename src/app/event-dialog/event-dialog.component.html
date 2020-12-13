@@ -47,7 +47,7 @@
   <span>{{ event.summary }}</span>
 </h3>
 
-<mat-dialog-actions>
+<mat-dialog-actions *ngIf="event.id">
 
   <mat-form-field appearance="fill">
     <mat-label>Event countdown link</mat-label>
