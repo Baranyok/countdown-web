@@ -8,4 +8,4 @@ Run `npm install` to install aplication dependencies, then run `ng serve` and na
 
 # Using the aplication 
 
-If you want to log into the aplication, make sure you are using your @vutbr.cz email address.
+If you want to log into the aplication, make sure you are using your `@vutbr.cz` email address.
