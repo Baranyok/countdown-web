@@ -23,11 +23,11 @@ export class CalendarService {
   ) { }
 
   get_calendars() {
-    let base_url = "/calendar/v3/users/me/calendarList";
+    let base_url = "https://www.googleapis.com/calendar/v3/users/me/calendarList" + this.key;
 
     let headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT')
+      .set('Access-Control-Allow-Methods', 'GET')
       .set('Authorization', 'Bearer ' + this.authService.getToken());
 
     // https://stackoverflow.com/questions/37172928/angular-cli-server-how-to-proxy-api-requests-to-another-server
@@ -46,11 +46,11 @@ export class CalendarService {
   }
 
   get_primary_calendar() {
-    let base_url = "calendar/v3/calendars/primary";
+    let base_url = "https://www.googleapis.com/calendar/v3/calendars/primary" + this.key;
 
     let headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT')
+      .set('Access-Control-Allow-Methods', 'GET')
       .set('Authorization', 'Bearer ' + this.authService.getToken());
 
     this.http.get(
@@ -68,11 +68,11 @@ export class CalendarService {
   }
 
   get_events(cal_id: string) {
-    let base_url = "/calendar/v3/calendars/".concat(cal_id, "/events");
+    let base_url = "https://www.googleapis.com/calendar/v3/calendars/".concat(cal_id, "/events") + this.key;
 
     let headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT')
+      .set('Access-Control-Allow-Methods', 'GET')
       .set('Authorization', 'Bearer ' + this.authService.getToken());
 
     // https://stackoverflow.com/questions/37172928/angular-cli-server-how-to-proxy-api-requests-to-another-server
@@ -92,11 +92,11 @@ export class CalendarService {
 
 
   get_primary_events() {
-    let base_url = "/calendar/v3/calendars/primary/events";
+    let base_url = "https://www.googleapis.com/calendar/v3/calendars/primary/events" + this.key;
 
     let headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT')
+      .set('Access-Control-Allow-Methods', 'GET')
       .set('Authorization', 'Bearer ' + this.authService.getToken());
 
     // https://stackoverflow.com/questions/37172928/angular-cli-server-how-to-proxy-api-requests-to-another-server
@@ -115,7 +115,6 @@ export class CalendarService {
   }
 
   add_event(event: any, cal_id?: string) {
-    console.log(event, cal_id);
 
     if (cal_id == '') {
       cal_id = "primary";
@@ -140,7 +139,7 @@ export class CalendarService {
   }
 
   get_event(calendar: string, event: string) {
-    let base_url = "/calendar/v3/calendars/" + calendar + "/events/" + event;
+    let base_url = "https://www.googleapis.com/calendar/v3/calendars/" + calendar + "/events/" + event + this.key;
 
     let headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
