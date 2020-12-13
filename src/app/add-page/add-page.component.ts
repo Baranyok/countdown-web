@@ -20,7 +20,8 @@ interface myEvent {
   end: {
     date?: string,
     dateTime?: Date,
-  }
+  },
+  id?: any,
 }
 
 @Component({
