@@ -1,7 +1,15 @@
+.small {
+  .mat-drawer {
+    min-width: 80%;
+    position: fixed;
+  }
+}
 
-.mat-drawer {
-  min-width: 300px;
-  position: fixed;
+.large {
+  .mat-drawer {
+    min-width: 300px;
+    position: fixed;
+  }
 }
 
 .mat-drawer-content {

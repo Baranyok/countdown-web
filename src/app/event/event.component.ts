@@ -1,9 +1,10 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CalendarService } from '../calendar.service';
 import { CountdownService } from '../countdown.service';
-import { Countdown, Event } from '../event-dialog/event-dialog.component';
+import { Countdown } from '../event-dialog/event-dialog.component';
 
 @Component({
   selector: 'app-event',
@@ -14,14 +15,27 @@ export class EventComponent implements OnInit {
   public countdown: Countdown;
   public event;
   private interval;
+  public size: string;
 
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
     private calendarService: CalendarService,
     private countdownService: CountdownService,
-    private router: Router
-  ) { }
+    private router: Router,
+    public breakpointObserver: BreakpointObserver
+  ) {
+    breakpointObserver.observe([
+      Breakpoints.Small,
+      Breakpoints.XSmall
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.size = "small";
+      } else {
+        this.size = "large";
+      }
+    });
+  }
 
   async ngOnInit() {
     if (await this.authService.checkIfUserAuthenticated()) {

@@ -21,7 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { MatTimepickerModule } from 'mat-timepicker';
 
 // Components
 
@@ -58,6 +58,7 @@ import { InfoBarComponent } from './info-bar/info-bar.component';
     MatMenuModule,
     MatSnackBarModule,
     MatIconModule,
+    MatTimepickerModule,
     MatNativeDateModule,
     ClipboardModule,
     MatCardModule,

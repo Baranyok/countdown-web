@@ -1,11 +1,11 @@
 <div *ngIf="countdown">
   <div class="toggle">
-    <mat-slide-toggle color="primary" value="countdown.time" (change)="toggleTime()">
-      Display time
+    <mat-slide-toggle color="accent" value="countdown.time" (change)="toggleTime()">
+      {{countdown.time ? 'Hide' : 'Show'}} time
     </mat-slide-toggle>
   </div>
 
-  <div class="wrapper">
+  <div class="wrapper {{size}}">
 
     <!-- TIME  -->
     <div *ngIf="countdown.time">
@@ -21,6 +21,9 @@
     <div *ngIf="countdown.time">
       <h2 mat-display-1>{{ countdown.hours }}</h2>
       <span class="label">{{countdown.hours == 1 ? 'hour' : 'hours'}}</span>
+    </div>
+
+    <div *ngIf="countdown.time" class="verticalFill">
     </div>
 
     <!-- DATE -->

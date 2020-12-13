@@ -20,7 +20,7 @@
 
   <mat-card *ngIf="events">
     <h2 class="left">{{selected_calendar.summary}}</h2>
-    <button mat-flat-button color="primary" class="right" mat-button [matMenuTriggerFor]="menu">Change calendar</button>
+    <button mat-flat-button color="accent" class="right" mat-button [matMenuTriggerFor]="menu">Change calendar</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngFor="let calendar of calendars" (click)="set_calendar(calendar)">{{ calendar.summary
         }}</button>

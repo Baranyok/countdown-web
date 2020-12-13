@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CountdownService } from '../countdown.service';
@@ -42,12 +43,26 @@ export class EventDialogComponent implements OnInit {
   private calendar: string;
   public event: Event;
 
+  public size: string;
   private interval;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
-    private coutndownService: CountdownService
-  ) { }
+    private coutndownService: CountdownService,
+    public breakpointObserver: BreakpointObserver
+
+  ) {
+    breakpointObserver.observe([
+      Breakpoints.Small,
+      Breakpoints.XSmall
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.size = "small";
+      } else {
+        this.size = "large";
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.event = this.data.event;

@@ -1,3 +1,4 @@
+
 mat-select-trigger mat-icon {
   vertical-align: middle;
   margin-right: .5em;
@@ -8,6 +9,7 @@ mat-select-trigger mat-icon {
   display: flex;
   justify-content: space-between;
   padding: 1.75em 1em;
+  border-radius: 3px;
 
   .event-info {
     display: flex;
@@ -37,6 +39,7 @@ mat-select-trigger mat-icon {
   }
 
   &:hover {
-    background: #f9f9f9;
+
   }
+
 }
