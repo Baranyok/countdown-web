@@ -1,7 +1,15 @@
+.small {
+  .mat-drawer {
+    min-width: 80%;
+    position: fixed;
+  }
+}
 
-.mat-drawer {
-  min-width: 300px;
-  position: fixed;
+.large {
+  .mat-drawer {
+    min-width: 300px;
+    position: fixed;
+  }
 }
 
 .mat-drawer-content {
@@ -37,9 +45,12 @@ mat-list {
 }
 
 
-
+.example-spacer {
+  flex: 1 1 auto;
+}
 
 .mat-toolbar {
+
   img {
     height: 70%;
     width: auto;

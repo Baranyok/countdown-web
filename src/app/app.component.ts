@@ -1,9 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { InfoBarComponent } from './info-bar/info-bar.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +14,34 @@ export class AppComponent {
   public mobile = false;
   public currentSite;
   public user;
+  public drawer: MatDrawer;
+  public drawerOpen: boolean;
   public theme = "light-theme";
+  public size: string;
 
   constructor(
     public router: Router,
     public authService: AuthService,
-    public overlayContainer: OverlayContainer
+    public overlayContainer: OverlayContainer,
+    public breakpointObserver: BreakpointObserver
   ) {
     router.events.subscribe((event: NavigationEnd) => {
       this.currentSite = this.router.url;
     });
+
+    breakpointObserver.observe([
+      Breakpoints.Small,
+      Breakpoints.XSmall
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.drawerOpen = false;
+        this.size = "small";
+      } else {
+        this.size = "large";
+      }
+    });
+
+
   }
 
   async ngOnInit() {
@@ -44,6 +62,10 @@ export class AppComponent {
     }
     this.overlayContainer.getContainerElement().classList.add(this.theme);
 
+  }
+
+  toggleDrawer() {
+    this.drawerOpen = !this.drawerOpen;
   }
 
 }

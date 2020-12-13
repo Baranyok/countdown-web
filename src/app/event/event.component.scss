@@ -13,19 +13,48 @@
   justify-content: space-between;
   width: fit-content;
   margin: auto;
+  flex-wrap: wrap;
 
   div {
     margin: 1em 0;
     text-align: center;
   }
 
-  h2 {
-    font-size: 75px;
-    padding: .5em;
-    padding-bottom: .1em;
-    padding-top: .25em;
+  .verticalFill {
+    width: 2em;
   }
 
+  &.small {
+    h2 {
+      font-size: 45px;
+      padding-bottom: .1em;
+      padding-top: .25em;
+    }
+
+    .verticalFill{
+      flex-basis: 100%;
+    }
+
+    .label {
+      letter-spacing: 0;
+    }
+  }
+
+  &.large {
+    h2 {
+      font-size: 60px;
+      padding: .45em;
+      padding-bottom: .1em;
+      padding-top: .25em;
+    }
+  }
+
+  .label {
+    font-family: 'Roboto';
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
 
   .label {
     font-family: 'Roboto';
@@ -42,23 +71,5 @@ h3 {
 
   span {
     font-weight: 500;
-  }
-}
-
-
-mat-dialog-actions {
-  justify-content: center;
-
-  mat-form-field {
-    width: 400px;
-    margin-right: 1em;
-
-    input {
-      text-overflow: ellipsis;
-    }
-  }
-
-  button {
-    margin-bottom: 1em;
   }
 }
