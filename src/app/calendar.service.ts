@@ -13,7 +13,7 @@ import { throwError } from 'rxjs';
 })
 export class CalendarService {
 
-  key = "?key=AIzaSyB0aafA1fTIR85gPqugdiMIoLfZjVkZuX4";
+  key = "?key=AIzaSyAWTKYhwcR8vTrdqc8GGvHfg_WNUWC-4bU";
   res: {
     items?: Array<any>
   };
