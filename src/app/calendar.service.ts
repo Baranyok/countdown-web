@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-import { InfoBarComponent } from './info-bar/info-bar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
@@ -116,8 +115,11 @@ export class CalendarService {
   }
 
   add_event(event: any, cal_id?: string) {
-    console.log(event);
-    let base_url = "https://www.googleapis.com/calendar/v3/calendars/primary/events" + this.key;
+
+    if (cal_id == '') {
+      cal_id = "primary";
+    }
+    let base_url = "/calendar/v3/calendars/" + cal_id + "/events" + this.key;
 
     let headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
@@ -128,20 +130,12 @@ export class CalendarService {
       base_url,
       event,
       { headers }
-    ).subscribe({
-      next: res => {
-        this.snackBar.openFromComponent(InfoBarComponent, {
-          data: "Request successful",
-          duration: 2000
-        })
-      },
-      error: error => {
-        this.snackBar.openFromComponent(InfoBarComponent, {
-          data: "Request failed",
-          duration: 2000
-        })
-      }
-    })
+    ).pipe(
+      map(res => {
+        return res;
+      })
+    )
+
   }
 
   get_event(calendar: string, event: string) {

@@ -1,23 +1,4 @@
 <div class="content" *ngIf="authService.isUser()">
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Select Calendar</mat-label>
-    <mat-select *ngIf="calendars" placeholder="Select calendar">
-      <mat-select-trigger>
-        <mat-icon>today</mat-icon>
-        {{selected_cal.summary}}
-      </mat-select-trigger>
-      <mat-option *ngFor="let calendar of calendars" (click)="set_cal(calendar)" value="{{calendar.etaq}}"
-        selected="calendar == selected_cal">
-        <mat-icon>today</mat-icon>
-        {{calendar.summary}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <button mat-flat-button mat-color="accent" (click)="get_events()">Get events</button> -->
-
-
-
   <mat-card *ngIf="events">
     <h2 class="left">{{selected_calendar.summary}}</h2>
     <button mat-flat-button color="accent" class="right" mat-button [matMenuTriggerFor]="menu">Change calendar</button>
