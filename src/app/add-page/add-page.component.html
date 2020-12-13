@@ -6,22 +6,33 @@
     <form [formGroup]="eventForm" class={{size}}>
 
       <!-- EVENT NAME -->
-      <mat-form-field MatFormFieldControl="eventName" appearance="fill" floatLabel class="full">
+      <mat-form-field MatFormFieldControl="eventName" appearance="fill" floatLabel class="half" id="eventName">
         <mat-label>Event name</mat-label>
         <input matInput formControlName="eventName" required>
       </mat-form-field>
 
+      <mat-form-field MatFormFieldControl="eventCalendar" appearance="fill" floatLabel class="half" id="eventCalendar">
+        <mat-label>Event calendar</mat-label>
+        <mat-select formControlName="eventCalendar">
+          <mat-option *ngFor="let calendar of calendars" [value]="calendar.id">
+            {{ calendar.summary }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <!-- EVENT START -->
-      <mat-form-field MatFormFieldControl="eventStart" appearance="fill" floatLabel class="half">
+      <mat-form-field MatFormFieldControl="eventStart" appearance="fill" floatLabel class="half" id="eventStart">
         <mat-label>Start date</mat-label>
         <input matInput [matDatepicker]="startDate" required formControlName="eventStart">
         <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
         <mat-datepicker touchUi="mobile" #startDate></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field MatFormFieldControl="eventStartTime" appearance="fill" floatLabel class="half">
+      <mat-form-field MatFormFieldControl="eventStartTime" appearance="fill" floatLabel class="half"
+        id="eventStartTime">
         <mat-label>Start time</mat-label>
-        <input matTimepicker #t1="matTimepicker" formCotrolName="eventStartTime" [disableDialogOpenOnClick]="true">
+        <input matTimepicker #t1="matTimepicker" formCotrolName="eventStartTime" [disableDialogOpenOnClick]="true"
+          (timeChange)="setStartTime(t1)">
         <button mat-icon-button matSuffix (click)="t1.showDialog()">
           <mat-icon>access_time</mat-icon>
         </button>
@@ -31,14 +42,15 @@
       <!-- EVENT END -->
       <mat-form-field MatFormFieldControl="eventEnd" appearance="fill" floatLabel class="half">
         <mat-label>End date</mat-label>
-        <input matInput [matDatepicker]="endDate" formControlName="eventEnd">
+        <input matInput [matDatepicker]="endDate" formControlName="eventEnd" required>
         <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
         <mat-datepicker touchUi="mobile" #endDate></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field MatFormFieldControl="eventEndTime" appearance="fill" floatLabel class="half">
         <mat-label>End time</mat-label>
-        <input matTimepicker #t2="matTimepicker" formCotrolName="eventEndTime" [disableDialogOpenOnClick]="true">
+        <input matTimepicker #t2="matTimepicker" formCotrolName="eventEndTime" [disableDialogOpenOnClick]="true"
+          (timeChange)="setEndTime(t2)">
         <button mat-icon-button matSuffix (click)="t2.showDialog()">
           <mat-icon>access_time</mat-icon>
         </button>
