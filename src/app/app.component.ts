@@ -1,3 +1,4 @@
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationEnd, Router } from '@angular/router';
@@ -13,10 +14,12 @@ export class AppComponent {
   public mobile = false;
   public currentSite;
   public user;
+  public theme = "light-theme";
 
   constructor(
     public router: Router,
     public authService: AuthService,
+    public overlayContainer: OverlayContainer
   ) {
     router.events.subscribe((event: NavigationEnd) => {
       this.currentSite = this.router.url;
@@ -29,6 +32,18 @@ export class AppComponent {
 
   authenticate() {
     return this.authService.authenticate();
+  }
+
+  toggleChange() {
+    console.log(this.theme);
+    this.overlayContainer.getContainerElement().classList.remove(this.theme);
+    if (this.theme == "light-theme") {
+      this.theme = "dark-theme";
+    } else {
+      this.theme = "light-theme"
+    }
+    this.overlayContainer.getContainerElement().classList.add(this.theme);
+
   }
 
 }
