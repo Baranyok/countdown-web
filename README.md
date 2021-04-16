@@ -4,6 +4,12 @@
 
 This is a school project for my User Interface Programming course. My assignment was to make an aplication that would communicate with the school Google account, specifically the Google Calendar API and allow the user to display all their events in their calendars and calculate the time that is remaining until (or has passed since) the event.
 
+![Index page where you can add an event](/docs/add_page.png)
+![Event page - display all your events](/docs/events.png)
+![Countdown popup](/docs/coundown.png)
+![Event detail page with countdown](/docs/detail.png)
+
+
 <!-- screenshots here -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
