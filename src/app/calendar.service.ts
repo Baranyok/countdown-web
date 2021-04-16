@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CalendarService {
 
-  key = "?key=AIzaSyAWTKYhwcR8vTrdqc8GGvHfg_WNUWC-4bU";
+  key = API_KEY;
   res: {
     items?: Array<any>
   };
