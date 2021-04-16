@@ -2,7 +2,7 @@
 
 ## About
 
-This is a school project for my User Interface Programming course. My assignment was to make an aplication that would communicate with the school Google account, specifically the Google Calendar API and allow the user to display all their events in their calendars and calculate the time remaining until (or passed since) the event.
+This is a school project for my User Interface Programming course. My assignment was to make an aplication that would communicate with the school Google account, specifically the Google Calendar API and allow the user to display all their events in their calendars and calculate the time that is remaining until (or has passed since) the event.
 
 <!-- screenshots here -->
 

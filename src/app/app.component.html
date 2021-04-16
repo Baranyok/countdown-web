@@ -4,7 +4,7 @@
     <mat-drawer #drawer mode="{{ size == 'small' ? 'push' : 'side'}}" hasBackdrop="false" opened="{{ drawerOpen}}">
       <mat-toolbar class="mat-elevation-z3">
 
-        <img *ngIf="authService.isUser()" src="{{ authService.user.getBasicProfile().getImageUrl() }}">
+        <img *ngIf="!authService.isUser()" src="{{ authService.user.getBasicProfile().getImageUrl() }}">
         <span>{{authService.isUser() ? authService.user.getBasicProfile().getName() : 'Unknown user'}}</span>
         <span class="example-spacer"></span>
         <button mat-icon-button (click)="authenticate()">
